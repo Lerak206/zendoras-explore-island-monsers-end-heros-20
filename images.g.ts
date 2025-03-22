@@ -1,4 +1,4 @@
-// Auto-generated code. Do not edit.
+// Automatisch gegenereerde code. Niet bewerken.
 namespace myImages {
 
     helpers._registerFactory("image", function(name: string) {
@@ -167,31 +167,6 @@ b b 8 8 8 8 8 8 8 . .
 . 7 7 7 7 7 7 7 5 5 5 5 5 5 5 . 
 . . 7 7 7 7 7 7 7 7 7 5 5 5 . . 
 . . . . . . . . . . . . . . . . 
-`;
-            case "]clmDtJ?D?Z`Npeo`LGh":
-            case "zendora":return img`
-. . . e e e e e . . . 
-. . . e e d d e . . . 
-. . . d f d f d . . . 
-. . . d d d d d . . . 
-. . . . d d d . . . . 
-6 8 8 8 6 d 6 8 8 8 6 
-d 6 8 8 8 6 8 8 8 6 d 
-d d 8 8 8 7 8 8 8 d d 
-d d 8 8 7 7 7 8 8 d d 
-d d 8 8 8 e 8 8 8 d d 
-d d 8 8 8 e 8 8 8 d d 
-. . 8 8 8 8 8 8 8 . . 
-. . e e e 5 e e e . . 
-. . 9 9 9 9 9 9 9 . . 
-. . 9 9 9 9 9 9 9 . . 
-. . 9 9 9 . 9 9 9 . . 
-. . 9 9 . . . 9 9 . . 
-. . 9 9 . . . 9 9 . . 
-. . 9 9 . . . 9 9 . . 
-. . 9 9 . . . 9 9 . . 
-. . 1 1 . . . 1 1 . . 
-. 1 1 1 . . . 1 1 1 . 
 `;
         }
         return null;
@@ -1604,4 +1579,4 @@ e96696666999999996666
     })
 
 }
-// Auto-generated code. Do not edit.
+// Automatisch gegenereerde code. Niet bewerken.
