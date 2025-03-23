@@ -887,7 +887,7 @@ let crindos: Sprite = null
 let zendora: Sprite = null
 let weapon = ""
 weapon = "no"
-tiles.setCurrentTilemap(tilemap`woestijnmap`)
+tiles.setCurrentTilemap(tilemap`dessert_biome`)
 zendora = sprites.create(img`
     . . . e e e e e . . . 
     . . . e e d d e . . . 
