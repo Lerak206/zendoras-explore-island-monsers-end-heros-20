@@ -5,7 +5,45 @@ namespace SpriteKind {
 namespace StatusBarKind {
     export const XP = StatusBarKind.create()
 }
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile3, function (sprite8, location8) {
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`woestijnstad`)
+    tiles.placeOnTile(zendora, tiles.getTileLocation(16, 18))
+})
+scene.onOverlapTile(SpriteKind.Enemy, assets.tile`water`, function (sprite2, location2) {
+    characterAnimations.loopFrames(
+    crindos,
+    [img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `],
+    500,
+    characterAnimations.rule(Predicate.Moving)
+    )
+    if (crindos.tileKindAt(TileDirection.Left, assets.tile`water2`)) {
+        crindos.x += -1
+    } else if (crindos.tileKindAt(TileDirection.Right, assets.tile`water2`)) {
+        crindos.x += 1
+    } else if (crindos.tileKindAt(TileDirection.Top, assets.tile`water2`)) {
+        crindos.y += 1
+    } else if (crindos.tileKindAt(TileDirection.Bottom, assets.tile`water2`)) {
+        crindos.y += -1
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`gras`, function (sprite11, location11) {
     controller.moveSprite(zendora, 100, 100)
     characterAnimations.loopFrames(
     zendora,
@@ -14,11 +52,265 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile3, function (sprite8, locatio
     characterAnimations.rule(Predicate.Moving)
     )
 })
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile11, function (sprite, location) {
-    tiles.setCurrentTilemap(tilemap`woestijnstad`)
-    tiles.placeOnTile(zendora, tiles.getTileLocation(16, 18))
+scene.onOverlapTile(SpriteKind.Enemy, assets.tile`water2`, function (sprite5, location5) {
+    characterAnimations.loopFrames(
+    crindos,
+    [img`
+        ....7................
+        7...7................
+        7...7777.............
+        77777.777............
+        .77777.77............
+        721721777............
+        777777777............
+        7f11f7776............
+        77ff77.66............
+        .77776666666bbbbbbbee
+        ..6666666666bbbbbbbee
+        ...666666666bbb.....e
+        ....66666666bbbbb....
+        9777776666669bbbbbbee
+        999777666999999bbbbee
+        66669999999966669669e
+        966999996669966699966
+        999699999966999996666
+        696699666999666699996
+        999669966666999966699
+        996966696999669999666
+        `,img`
+        .....................
+        7...7................
+        7...7................
+        77777................
+        .77777...............
+        7217217..............
+        7777777..............
+        7f11f77..............
+        77ff77...............
+        .77776677666bbbbbbbee
+        ..6666677666bbbbbbbee
+        ...666777666bbb.....e
+        ....66776666bbbbb....
+        9777776666669bbbbbbee
+        999777666999999bbbbee
+        66669999999966669669e
+        966999996669966699966
+        999699999966999996666
+        696699666999666699996
+        999669966666999966699
+        996966696999669999666
+        `,img`
+        ....7................
+        7...7................
+        7...7................
+        77777................
+        .77777...............
+        7217217..............
+        7777777..............
+        7f11f77..............
+        77ff77..6............
+        .77776667666bbbbbbbee
+        ..6666677766bbbbbbbee
+        ...666777666bbb.....e
+        ....66776666bbbbb....
+        9777776666669bbbbbbee
+        999777666999999bbbbee
+        66669999999966669669e
+        966999996669966699966
+        999699999966999996666
+        696699666999666699996
+        999669966666999966699
+        996966696999669999666
+        `],
+    500,
+    characterAnimations.rule(Predicate.MovingLeft)
+    )
+    characterAnimations.loopFrames(
+    crindos,
+    [img`
+        999999799979999999999
+        699999799779966666699
+        666669777799999996999
+        996669777777766966966
+        996699217777796666696
+        666997777797799699966
+        996669f77797799699669
+        966996666667696699699
+        669966667669996666699
+        699977667669966966999
+        666977666669666996666
+        9966776766b9999699996
+        996699666bb9999666699
+        666999bb9b76666669669
+        6669997b9bb9999966666
+        9966997b9779999999666
+        999699bb9777966666699
+        999969779999996666666
+        666669777999999996999
+        699666669999966666999
+        999999966666669999999
+        `,img`
+        999999799979999999999
+        699999799779966666699
+        666669777799999996999
+        996669777129966966966
+        996699777777996666696
+        6669997777f9999699966
+        996699777779999699669
+        966776666667777699699
+        669776667677777666699
+        699779667669966966999
+        666779666669666996666
+        996699666669999699996
+        9966996666b9999666699
+        6669997b9b76666669669
+        6669997b9bb9999966666
+        996699bb9bb9999999666
+        999699bb9779966666699
+        999969779777996666666
+        666669777999999996999
+        699666669999966666999
+        999999966666669999999
+        `,img`
+        999999799979999999999
+        699999799779966666699
+        666669777799999996999
+        996667771299966966966
+        996697777779996666696
+        666977777799999699966
+        996677777f99999699669
+        966977666666696699699
+        669977667667796666699
+        699966667667766966999
+        666999666667796996666
+        9966997666b9999699996
+        996699666bb9999666699
+        666999bb9bb6666669669
+        6669997b9b79999966666
+        9966997b9779999999666
+        999699bb9777966666699
+        999969779999996666666
+        666669777999999996999
+        699666669999966666999
+        999999966666669999999
+        `],
+    500,
+    characterAnimations.rule(Predicate.MovingUp)
+    )
+    characterAnimations.loopFrames(
+    crindos,
+    assets.animation`crindos_zwem_rechts`,
+    500,
+    characterAnimations.rule(Predicate.MovingRight)
+    )
+    characterAnimations.loopFrames(
+    crindos,
+    [img`
+        .....................
+        .....................
+        ......777............
+        ......77.............
+        ......bb.777.........
+        ......7b.77..........
+        ......7b.bb..........
+        ......bb.b7..........
+        ......666bb..........
+        ....776766b..........
+        ....7766666..........
+        ....7766766..........
+        ....6666766..........
+        .....6666667.........
+        ......f777.77........
+        .....77777.77........
+        ......2177777........
+        ......7777777........
+        ......7777...........
+        ......7..77..........
+        ......7...7..........
+        `,img`
+        .....................
+        .....................
+        ......777............
+        ......77.777.........
+        ......bb.77..........
+        ......bb.bb..........
+        ......7b.bb..........
+        ......7b.b7..........
+        ......6666b..........
+        ......66666..........
+        ...77.66666..........
+        ...77.66766..........
+        ...776667677777......
+        ...776666667777......
+        ......77777..........
+        ......7777f..........
+        ......777777.........
+        ......77712..........
+        ......7777...........
+        ......7..77..........
+        ......7...7..........
+        `,img`
+        .....................
+        .....................
+        ......777............
+        ......77.............
+        ......bb.777.........
+        ......7b.77..........
+        ......7b.b7..........
+        ......bb.bb..........
+        ......666bb..........
+        ......7666b..........
+        ......6666677........
+        ....666676677........
+        ....776676677........
+        ....776666666........
+        ....77777f...........
+        ....777777...........
+        .....777777..........
+        .....77712...........
+        ......7777...........
+        ......7..77..........
+        ......7...7..........
+        `],
+    500,
+    characterAnimations.rule(Predicate.MovingDown)
+    )
+    crindos.follow(zendora, 20)
 })
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile6, function (sprite7, location7) {
+scene.onOverlapTile(SpriteKind.Player, assets.tile`water`, function (sprite3, location3) {
+    controller.moveSprite(zendora, 70, 70)
+    if (swim == 0) {
+        swim = 1
+        info.startCountdown(10)
+    }
+})
+info.onCountdownEnd(function () {
+    while (zendora.tileKindAt(TileDirection.Center, assets.tile`water`)) {
+        health_bar.value += -1e-16
+    }
+})
+statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
+    sprites.destroy(crindos)
+    mySprite2 = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . 7 7 5 5 5 5 5 5 5 5 5 5 . . 
+        . 7 7 7 5 5 5 5 5 5 5 1 1 5 5 . 
+        . 7 7 7 5 5 5 5 5 5 5 5 1 5 5 . 
+        . 7 7 7 7 5 5 5 5 5 5 5 5 5 5 . 
+        . 7 7 7 7 5 5 5 5 5 5 5 5 5 5 . 
+        . 7 7 7 7 5 5 5 5 5 5 5 5 5 5 . 
+        . 7 7 7 7 5 5 5 5 5 5 5 5 5 5 . 
+        . 7 7 7 7 5 5 5 5 5 5 5 5 5 5 . 
+        . 7 7 7 7 7 5 5 5 5 5 5 5 5 5 . 
+        . 7 7 7 7 7 5 5 5 5 5 5 5 5 5 . 
+        . 7 7 7 7 7 7 5 5 5 5 5 5 5 5 . 
+        . 7 7 7 7 7 7 5 5 5 5 5 5 5 5 . 
+        . 7 7 7 7 7 7 7 5 5 5 5 5 5 5 . 
+        . . 7 7 7 7 7 7 7 7 7 5 5 5 . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.XP)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`water2`, function (sprite7, location7) {
     swim = 0
     info.stopCountdown()
     controller.moveSprite(zendora, 70, 70)
@@ -47,7 +339,22 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile6, function (sprite7, locatio
     characterAnimations.rule(Predicate.MovingDown)
     )
 })
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile7, function (sprite11, location11) {
+statusbars.onZero(StatusBarKind.Health, function (status) {
+    game.gameOver(false)
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (weapon == "jes") {
+        if (crindos.x - zendora.x <= 50 && crindos.x - zendora.x >= -50 && (crindos.y - zendora.y <= 50 && crindos.y - zendora.y >= -50)) {
+            crindos_statusbar.value += -10
+        }
+    }
+    pause(500)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`transparency16`, function (sprite12, location12) {
+    tiles.setCurrentTilemap(tilemap`woestijnstad`)
+    tiles.placeOnTile(zendora, tiles.getTileLocation(12, 8))
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`woestijngrond1`, function (sprite8, location8) {
     controller.moveSprite(zendora, 100, 100)
     characterAnimations.loopFrames(
     zendora,
@@ -56,34 +363,7 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile7, function (sprite11, locati
     characterAnimations.rule(Predicate.Moving)
     )
 })
-scene.onOverlapTile(SpriteKind.Player, myTiles.transparency16, function (sprite9, location9) {
-    controller.moveSprite(zendora, 100, 100)
-    characterAnimations.loopFrames(
-    zendora,
-    assets.animation`zendora_loop_links`,
-    500,
-    characterAnimations.rule(Predicate.MovingLeft)
-    )
-    characterAnimations.loopFrames(
-    zendora,
-    assets.animation`loop_naar_beneden`,
-    500,
-    characterAnimations.rule(Predicate.MovingUp)
-    )
-    characterAnimations.loopFrames(
-    zendora,
-    assets.animation`old`,
-    500,
-    characterAnimations.rule(Predicate.MovingRight)
-    )
-    characterAnimations.loopFrames(
-    zendora,
-    assets.animation`loop_naar_beneden`,
-    500,
-    characterAnimations.rule(Predicate.MovingDown)
-    )
-})
-scene.onOverlapTile(SpriteKind.Enemy, myTiles.transparency16, function (sprite10, location10) {
+scene.onOverlapTile(SpriteKind.Enemy, assets.tile`transparency16`, function (sprite10, location10) {
     crindos.follow(zendora, 50)
     characterAnimations.loopFrames(
     crindos,
@@ -569,315 +849,35 @@ scene.onOverlapTile(SpriteKind.Enemy, myTiles.transparency16, function (sprite10
     characterAnimations.rule(Predicate.NotMoving)
     )
 })
-info.onCountdownEnd(function () {
-    while (zendora.tileKindAt(TileDirection.Center, myTiles.tile1)) {
-        health_bar.value += -1e-16
-    }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite13, otherSprite) {
+    health_bar.value += -1
 })
-statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
-    sprites.destroy(crindos)
-    mySprite2 = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . 7 7 5 5 5 5 5 5 5 5 5 5 . . 
-        . 7 7 7 5 5 5 5 5 5 5 1 1 5 5 . 
-        . 7 7 7 5 5 5 5 5 5 5 5 1 5 5 . 
-        . 7 7 7 7 5 5 5 5 5 5 5 5 5 5 . 
-        . 7 7 7 7 5 5 5 5 5 5 5 5 5 5 . 
-        . 7 7 7 7 5 5 5 5 5 5 5 5 5 5 . 
-        . 7 7 7 7 5 5 5 5 5 5 5 5 5 5 . 
-        . 7 7 7 7 5 5 5 5 5 5 5 5 5 5 . 
-        . 7 7 7 7 7 5 5 5 5 5 5 5 5 5 . 
-        . 7 7 7 7 7 5 5 5 5 5 5 5 5 5 . 
-        . 7 7 7 7 7 7 5 5 5 5 5 5 5 5 . 
-        . 7 7 7 7 7 7 5 5 5 5 5 5 5 5 . 
-        . 7 7 7 7 7 7 7 5 5 5 5 5 5 5 . 
-        . . 7 7 7 7 7 7 7 7 7 5 5 5 . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.XP)
-})
-statusbars.onZero(StatusBarKind.Health, function (status) {
-    game.gameOver(false)
-})
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (weapon == "jes") {
-        if (crindos.x - zendora.x <= 50 && crindos.x - zendora.x >= -50 && (crindos.y - zendora.y <= 50 && crindos.y - zendora.y >= -50)) {
-            crindos_statusbar.value += -10
-        }
-    }
-    pause(500)
-})
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile1, function (sprite3, location3) {
-    controller.moveSprite(zendora, 70, 70)
-    if (swim == 0) {
-        swim = 1
-        info.startCountdown(10)
-    }
-})
-scene.onOverlapTile(SpriteKind.Enemy, myTiles.tile6, function (sprite5, location5) {
+scene.onOverlapTile(SpriteKind.Player, assets.tile`transparency16`, function (sprite9, location9) {
+    controller.moveSprite(zendora, 100, 100)
     characterAnimations.loopFrames(
-    crindos,
-    [img`
-        ....7................
-        7...7................
-        7...7777.............
-        77777.777............
-        .77777.77............
-        721721777............
-        777777777............
-        7f11f7776............
-        77ff77.66............
-        .77776666666bbbbbbbee
-        ..6666666666bbbbbbbee
-        ...666666666bbb.....e
-        ....66666666bbbbb....
-        9777776666669bbbbbbee
-        999777666999999bbbbee
-        66669999999966669669e
-        966999996669966699966
-        999699999966999996666
-        696699666999666699996
-        999669966666999966699
-        996966696999669999666
-        `,img`
-        .....................
-        7...7................
-        7...7................
-        77777................
-        .77777...............
-        7217217..............
-        7777777..............
-        7f11f77..............
-        77ff77...............
-        .77776677666bbbbbbbee
-        ..6666677666bbbbbbbee
-        ...666777666bbb.....e
-        ....66776666bbbbb....
-        9777776666669bbbbbbee
-        999777666999999bbbbee
-        66669999999966669669e
-        966999996669966699966
-        999699999966999996666
-        696699666999666699996
-        999669966666999966699
-        996966696999669999666
-        `,img`
-        ....7................
-        7...7................
-        7...7................
-        77777................
-        .77777...............
-        7217217..............
-        7777777..............
-        7f11f77..............
-        77ff77..6............
-        .77776667666bbbbbbbee
-        ..6666677766bbbbbbbee
-        ...666777666bbb.....e
-        ....66776666bbbbb....
-        9777776666669bbbbbbee
-        999777666999999bbbbee
-        66669999999966669669e
-        966999996669966699966
-        999699999966999996666
-        696699666999666699996
-        999669966666999966699
-        996966696999669999666
-        `],
+    zendora,
+    assets.animation`zendora_loop_links`,
     500,
     characterAnimations.rule(Predicate.MovingLeft)
     )
     characterAnimations.loopFrames(
-    crindos,
-    [img`
-        999999799979999999999
-        699999799779966666699
-        666669777799999996999
-        996669777777766966966
-        996699217777796666696
-        666997777797799699966
-        996669f77797799699669
-        966996666667696699699
-        669966667669996666699
-        699977667669966966999
-        666977666669666996666
-        9966776766b9999699996
-        996699666bb9999666699
-        666999bb9b76666669669
-        6669997b9bb9999966666
-        9966997b9779999999666
-        999699bb9777966666699
-        999969779999996666666
-        666669777999999996999
-        699666669999966666999
-        999999966666669999999
-        `,img`
-        999999799979999999999
-        699999799779966666699
-        666669777799999996999
-        996669777129966966966
-        996699777777996666696
-        6669997777f9999699966
-        996699777779999699669
-        966776666667777699699
-        669776667677777666699
-        699779667669966966999
-        666779666669666996666
-        996699666669999699996
-        9966996666b9999666699
-        6669997b9b76666669669
-        6669997b9bb9999966666
-        996699bb9bb9999999666
-        999699bb9779966666699
-        999969779777996666666
-        666669777999999996999
-        699666669999966666999
-        999999966666669999999
-        `,img`
-        999999799979999999999
-        699999799779966666699
-        666669777799999996999
-        996667771299966966966
-        996697777779996666696
-        666977777799999699966
-        996677777f99999699669
-        966977666666696699699
-        669977667667796666699
-        699966667667766966999
-        666999666667796996666
-        9966997666b9999699996
-        996699666bb9999666699
-        666999bb9bb6666669669
-        6669997b9b79999966666
-        9966997b9779999999666
-        999699bb9777966666699
-        999969779999996666666
-        666669777999999996999
-        699666669999966666999
-        999999966666669999999
-        `],
+    zendora,
+    assets.animation`loop_naar_beneden`,
     500,
     characterAnimations.rule(Predicate.MovingUp)
     )
     characterAnimations.loopFrames(
-    crindos,
-    assets.animation`crindos_zwem_rechts`,
+    zendora,
+    assets.animation`old`,
     500,
     characterAnimations.rule(Predicate.MovingRight)
     )
     characterAnimations.loopFrames(
-    crindos,
-    [img`
-        .....................
-        .....................
-        ......777............
-        ......77.............
-        ......bb.777.........
-        ......7b.77..........
-        ......7b.bb..........
-        ......bb.b7..........
-        ......666bb..........
-        ....776766b..........
-        ....7766666..........
-        ....7766766..........
-        ....6666766..........
-        .....6666667.........
-        ......f777.77........
-        .....77777.77........
-        ......2177777........
-        ......7777777........
-        ......7777...........
-        ......7..77..........
-        ......7...7..........
-        `,img`
-        .....................
-        .....................
-        ......777............
-        ......77.777.........
-        ......bb.77..........
-        ......bb.bb..........
-        ......7b.bb..........
-        ......7b.b7..........
-        ......6666b..........
-        ......66666..........
-        ...77.66666..........
-        ...77.66766..........
-        ...776667677777......
-        ...776666667777......
-        ......77777..........
-        ......7777f..........
-        ......777777.........
-        ......77712..........
-        ......7777...........
-        ......7..77..........
-        ......7...7..........
-        `,img`
-        .....................
-        .....................
-        ......777............
-        ......77.............
-        ......bb.777.........
-        ......7b.77..........
-        ......7b.b7..........
-        ......bb.bb..........
-        ......666bb..........
-        ......7666b..........
-        ......6666677........
-        ....666676677........
-        ....776676677........
-        ....776666666........
-        ....77777f...........
-        ....777777...........
-        .....777777..........
-        .....77712...........
-        ......7777...........
-        ......7..77..........
-        ......7...7..........
-        `],
+    zendora,
+    assets.animation`loop_naar_beneden`,
     500,
     characterAnimations.rule(Predicate.MovingDown)
     )
-    crindos.follow(zendora, 20)
-})
-scene.onOverlapTile(SpriteKind.Enemy, myTiles.tile1, function (sprite2, location2) {
-    characterAnimations.loopFrames(
-    crindos,
-    [img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `],
-    500,
-    characterAnimations.rule(Predicate.Moving)
-    )
-    if (crindos.tileKindAt(TileDirection.Left, myTiles.tile6)) {
-        crindos.x += -1
-    } else if (crindos.tileKindAt(TileDirection.Right, myTiles.tile6)) {
-        crindos.x += 1
-    } else if (crindos.tileKindAt(TileDirection.Top, myTiles.tile6)) {
-        crindos.y += 1
-    } else if (crindos.tileKindAt(TileDirection.Bottom, myTiles.tile6)) {
-        crindos.y += -1
-    }
-})
-scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairLarge, function (sprite12, location12) {
-    tiles.setCurrentTilemap(tilemap`woestijnstad`)
-    tiles.placeOnTile(zendora, tiles.getTileLocation(12, 8))
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite13, otherSprite) {
-    health_bar.value += -1
 })
 let mySprite2: Sprite = null
 let swim = 0
